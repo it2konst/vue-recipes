@@ -1,3 +1,9 @@
-<script setup></script>
+<script setup>
+import AppLayout from "@/layouts/AppLayout.vue";
+</script>
 
-<template></template>
+<template>
+  <AppLayout />
+</template>
+
+<style lang="scss" scoped></style>

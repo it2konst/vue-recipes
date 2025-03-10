@@ -1,9 +1,17 @@
 <script setup>
 import AppLayout from "@/layouts/AppLayout.vue";
+import AppButton from "@/components/AppButton.vue";
 </script>
 
 <template>
-  <AppLayout />
+  <app-layout>
+    <template #title>Рецепты</template>
+    <template #controls>
+      <app-button>Добавить</app-button>
+    </template>
+  </app-layout>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "@/assets/styles/index" as *;
+</style>

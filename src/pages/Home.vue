@@ -7,7 +7,7 @@ import AppButton from "@/components/AppButton.vue";
   <app-layout>
     <template #title>Рецепты</template>
     <template #controls>
-      <app-button>Добавить</app-button>
+      <app-button text="Добавить рецепт"></app-button>
     </template>
   </app-layout>
 </template>

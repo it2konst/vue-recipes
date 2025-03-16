@@ -39,6 +39,7 @@ import AppMenu from "@/components/AppMenu.vue";
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .menu-container {
@@ -49,5 +50,9 @@ import AppMenu from "@/components/AppMenu.vue";
   font-size: 24px;
   font-weight: 700;
   color: $violet;
+}
+
+.inner {
+  padding-top: 1rem;
 }
 </style>

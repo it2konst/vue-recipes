@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { RecipeService } from "@/services";
+import { ROUTES_PATHS } from "@/constants";
 import AppLayout from "@/layouts/AppLayout.vue";
 import AppButton from "@/components/AppButton.vue";
 // import { tr } from "element-plus/es/locale";
@@ -13,6 +14,10 @@ const getRecipes = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const getRecipePath = (id) => {
+  return `${ROUTES_PATHS.RECIPE.split(":")[0]}${id}`;
 };
 
 onMounted(() => {
@@ -32,7 +37,9 @@ onMounted(() => {
           <el-table-column prop="idMeal" label="Id" />
           <el-table-column label="Image">
             <template #default="scope">
-              <img :src="scope?.row?.strMealThumb" alt="img" class="image" />
+              <router-link :to="getRecipePath(scope?.row?.idMeal)">
+                <img :src="scope?.row?.strMealThumb" alt="img" class="image" />
+              </router-link>
             </template>
           </el-table-column>
 
@@ -47,8 +54,8 @@ onMounted(() => {
                   :key="key"
                   type="primary"
                   class="tag"
-                  >{{ tag }}</el-tag
-                >
+                  >{{ tag }}
+                </el-tag>
               </template>
             </template>
           </el-table-column>
@@ -62,17 +69,19 @@ onMounted(() => {
 @use "@/assets/styles/index" as *;
 
 .image {
-  width: 70px;
+  display: block;
+  max-width: 70px;
+  width: 100%;
   height: auto;
 
-  border-radius: 50%;
   object-fit: cover;
   object-position: center;
 
-  border: 1px solid $violet;
+  border-radius: 1rem;
+  // border: 1px solid $violet;
 }
 
 .tag {
-  margin-right: 2px;
+  margin-right: 3px;
 }
 </style>

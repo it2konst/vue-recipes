@@ -4,7 +4,6 @@ import { RecipeService } from "@/services";
 import { ROUTES_PATHS } from "@/constants";
 import AppLayout from "@/layouts/AppLayout.vue";
 import AppButton from "@/components/AppButton.vue";
-// import { tr } from "element-plus/es/locale";
 
 const recipes = ref([]);
 
@@ -78,7 +77,6 @@ onMounted(() => {
   object-position: center;
 
   border-radius: 1rem;
-  // border: 1px solid $violet;
 }
 
 .tag {

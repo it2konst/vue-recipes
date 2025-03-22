@@ -9,10 +9,13 @@ const route = useRoute();
 // const recipeId = ref(route.params.id);
 const recipeId = route?.params.id;
 const recipe = ref(null);
+const recipeUpdate = ref(null);
 
 const fetchRecipe = async () => {
   try {
-    recipe.value = await RecipeService.getRecipeById(recipeId);
+    const response = await RecipeService.getRecipeById(recipeId);
+    recipe.value = response;
+    recipeUpdate.value = response;
   } catch (error) {
     console.log(error);
   }
@@ -32,7 +35,7 @@ onMounted(() => {
     <template #controls>
       <app-button text="Сохранить"></app-button>
     </template>
-    <template #inner> </template>
+    <template #inner>{{ recipeUpdate }}</template>
   </app-layout>
 </template>
 

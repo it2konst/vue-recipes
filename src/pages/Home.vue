@@ -33,8 +33,8 @@ onMounted(() => {
     <template #inner>
       <div class="wrapper">
         <el-table :data="recipes" style="width: 100%">
-          <el-table-column prop="idMeal" label="Id" />
-          <el-table-column label="Image">
+          <el-table-column prop="idMeal" label="Id" width="70" />
+          <el-table-column label="Image" width="100">
             <template #default="scope">
               <router-link :to="getRecipePath(scope?.row?.idMeal)">
                 <img :src="scope?.row?.strMealThumb" alt="img" class="image" />

@@ -28,7 +28,9 @@ onMounted(() => {
   <app-layout>
     <template #title>Рецепты</template>
     <template #controls>
-      <app-button text="Добавить рецепт"></app-button>
+      <router-link :to="getRecipePath('new')">
+        <app-button text="Добавить рецепт"></app-button>
+      </router-link>
     </template>
     <template #inner>
       <div class="wrapper">

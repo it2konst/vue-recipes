@@ -6,16 +6,17 @@ import AppLayout from "@/layouts/AppLayout.vue";
 import AppButton from "@/components/AppButton.vue";
 
 const route = useRoute();
-// const recipeId = ref(route.params.id);
 const recipeId = route?.params.id;
-const recipe = ref(null);
-const recipeUpdate = ref(null);
+const recipe = ref(RecipeService.getEmptyRecipe());
+const recipeUpdate = ref(RecipeService.getEmptyRecipe());
+const isCreatingMode = ref(true);
 
 const fetchRecipe = async () => {
   try {
     const response = await RecipeService.getRecipeById(recipeId);
     recipe.value = response;
     recipeUpdate.value = response;
+    isCreatingMode.value = false;
   } catch (error) {
     console.log(error);
   }
@@ -31,7 +32,9 @@ onMounted(() => {
 
 <template>
   <app-layout>
-    <template #title>Рецепт</template>
+    <template #title>{{
+      isCreatingMode ? "Новый рецепт" : recipeUpdate.strMeal
+    }}</template>
     <template #controls>
       <app-button text="Сохранить"></app-button>
     </template>
